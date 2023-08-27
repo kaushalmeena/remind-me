@@ -1,0 +1,25 @@
+{
+  "name": "remind-me",
+  "version": "1.0.0",
+  "description": "A firebase cloud-function for sending reminder for events mentioned in sheet in telegram",
+  "scripts": {
+    "start": "cd functions && npm run start",
+    "serve": "cd functions && npm run serve",
+    "deploy": "cd functions && npm run deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaushalmeena/remind-me.git"
+  },
+  "keywords": [
+    "reminder",
+    "cloud-functions",
+    "firebase"
+  ],
+  "author": {
+    "name": "kaushalmeena",
+    "email": "kaushal.meena1996@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {}
+}

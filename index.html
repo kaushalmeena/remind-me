@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>remind-me event.json creator</title>
+    <style>
+      .row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>remind-me events creation</h1>
+    <div id="container">
+      <div class="row">
+        <input type="text" placeholder="Event name" />
+        <input type="date" />
+        <button type="button" onclick="deleteRow(event)">Delete Row</button>
+      </div>
+    </div>
+    <button type="button" onclick="appendRow(event)">Append Row</button>
+    <button type="button" onclick="downloadData()">Download Data</button>
+    <script>
+      function deleteRow(event) {
+        event.target.closest(".row").remove();
+      }
+
+      function appendRow() {
+        const containerEl = document.getElementById("container");
+        const newRowEl = document.createElement("div");
+        newRowEl.className = "row";
+        newRowEl.innerHTML = `
+            <input type="text" placeholder="Event name">
+            <input type="date">
+            <button type="button" onclick="deleteRow(event)">Delete Row</button>
+        `;
+        containerEl.appendChild(newRowEl);
+      }
+
+      function downloadData() {
+        const rows = document.querySelectorAll(".row");
+        const eventData = [];
+
+        rows.forEach((row) => {
+          const name = row.querySelector("input[type='text']").value;
+          const date = row.querySelector("input[type='date']").value;
+          eventData.push({
+            name: name.trim(),
+            date: new Date(date).toISOString(),
+          });
+        });
+
+        const jsonData = JSON.stringify(eventData, null, 2);
+        const blob = new Blob([jsonData], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+
+        const anchorEl = document.createElement("a");
+        anchorEl.href = url;
+        anchorEl.download = "events.json";
+        anchorEl.click();
+
+        URL.revokeObjectURL(url);
+      }
+    </script>
+  </body>
+</html>
