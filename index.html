@@ -5,11 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>remind-me event.json creator</title>
     <style>
+      body {
+        counter-reset: section;
+      }
       .row {
         display: flex;
         align-items: center;
         margin-bottom: 10px;
         gap: 10px;
+      }
+      .row::before {
+        counter-increment: section;
+        content: counter(section) ". ";
       }
     </style>
   </head>
@@ -45,14 +52,20 @@
         const rows = document.querySelectorAll(".row");
         const eventData = [];
 
-        rows.forEach((row) => {
-          const name = row.querySelector("input[type='text']").value;
-          const date = row.querySelector("input[type='date']").value;
-          eventData.push({
-            name: name.trim(),
-            date: new Date(date).toISOString(),
-          });
-        });
+        for (let i = 0; i < rows.length; i++) {
+          const name = rows[i].querySelector("input[type='text']").value;
+          const date = rows[i].querySelector("input[type='date']").value;
+
+          if (!name || !date) {
+            alert(`Please enter event name and date for row ${i + 1}`);
+            return;
+          } else {
+            eventData.push({
+              name: name.trim(),
+              date: new Date(date).toISOString(),
+            });
+          }
+        }
 
         const jsonData = JSON.stringify(eventData, null, 2);
         const blob = new Blob([jsonData], { type: "application/json" });
