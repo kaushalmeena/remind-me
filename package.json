@@ -1,12 +1,11 @@
 {
   "name": "remind-me",
   "version": "1.0.0",
-  "description": "A firebase cloud-function for sending reminder for events mentioned in sheet in telegram",
+  "description": "A netlify-function for sending reminders in telegram",
   "scripts": {
-    "fn:install": "cd functions && npm install",
-    "fn:start": "cd functions && npm run start",
-    "fn:serve": "cd functions && npm run serve",
-    "fn:deploy": "cd functions && npm run deploy"
+    "dev": "netlify dev",
+    "deploy": "netlify deploy --prod",
+    "lint": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -14,13 +13,21 @@
   },
   "keywords": [
     "reminder",
-    "cloud-functions",
-    "firebase"
+    "functions",
+    "netlify"
   ],
   "author": {
     "name": "kaushalmeena",
     "email": "kaushal.meena1996@gmail.com"
   },
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "@netlify/functions": "^2.0.2",
+    "axios": "^1.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.7",
+    "netlify-cli": "^16.2.0",
+    "typescript": "^5.2.2"
+  }
 }

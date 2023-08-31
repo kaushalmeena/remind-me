@@ -1,0 +1,4 @@
+[dev]
+    port = 8000
+[build]
+    publish = "public"
