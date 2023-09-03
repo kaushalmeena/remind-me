@@ -1,4 +1,4 @@
-# RemindMe
+# Remind Me
 
 A netlify-function for sending reminders in telegram
 
@@ -75,7 +75,16 @@ $ netlify env:import .env
 
 ### Usage
 
-1. Create `events.json` file by using this [web page](./public/index.html) and save the file in root of `remind-me` folder
+1. Create `events.json` file in root of `remind-me` folder and add events in it in this format:
+```json
+[
+  {
+    "name": "<EVENT_NAME>",
+    "date": "<EVENT_DATE_IN_ISO_FORMAT>"
+  }
+]
+```    
+or use this [tool](https://myapp-remind-me.netlify.app/)
 
 
 2. Deploy project
