@@ -20,20 +20,20 @@ To set up everything in your local machine, you need to follow these steps:
 1. Clone this repo and then change the directory to the `remind-me` folder:
 
 ```bash
-$ git clone https://github.com/kaushalmeena/remind-me.git
-$ cd remind-me
+git clone https://github.com/kaushalmeena/remind-me.git
+cd remind-me
 ```
 
 2. Install project dependencies using npm:
 
 ```bash
-$ npm install
+npm install
 ```
 
 3. Create a `.env` file from `.env.example`
 
 ```bash
-$ cp .env.example .env
+cp .env.example .env
 ```
 
 4. Get a Telegram bot token
@@ -64,12 +64,12 @@ $ cp .env.example .env
 
 6. Login to your Netlify account, and follow the instructions
 ```bash
-$ npx netlify login
+npx netlify login
 ```    
 
 7. Set Netlify environment variables
 ```bash
-$ npx netlify env:import .env
+npx netlify env:import .env
 ```    
 
 ### Usage
@@ -89,7 +89,7 @@ or can use this [tool](https://myapp-remind-me.netlify.app/) for creating events
 
 2. Deploy project
 ```bash
-$ npm run deploy
+npm run deploy
 ```
 
 ## License
